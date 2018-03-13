@@ -7,6 +7,7 @@ public class ConnectionToDB {
 	private static String dbUrl = "jdbc:mysql://localhost/";
 	private static String dbUsername = "root";
 	private static String dbPassword = "gruppe25";
+	private int i = 0;
 
 	public Connection dbConnect() {
 		Connection connection = null;
@@ -51,9 +52,9 @@ public class ConnectionToDB {
 		try {
 			// Statement st = con.prepareCall("{call EmptyBandit.Ostehøvl()}");
 			CallableStatement st = con.prepareCall("call EmptyBandit.CreateNewGame(?)");
-			st.setString(1, "_hej");
+			st.setString(1, "_" + i);
 			st.execute();
-			
+			i++;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

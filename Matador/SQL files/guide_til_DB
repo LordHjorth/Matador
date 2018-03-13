@@ -8,4 +8,10 @@ I WORKBENCH:
 
 -> CREATE STORED PROCEDURE...
 
--> ERSTAT NUVÆRENDE TEKST MED TEKSTEN FRA FILEN 'CreateNewGame.txt' som findes i SQL files mappen heri projektet :-) tror det burde virke nu
+-> ERSTAT NUVÆRENDE TEKST MED TEKSTEN FRA FILEN 'CreateNewGame.txt' som findes i SQL files mappen heri projektet :-) 
+
+-> klik på apply og derefter finnish 
+
+så burde den gerne være der :-) 
+
+dog skal diverse databaser droppes inden der køres et nyt spil lige pt
