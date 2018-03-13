@@ -8,7 +8,7 @@ PREPARE stmt_create FROM @s;
 EXECUTE stmt_create;
 DEALLOCATE PREPARE stmt_create;
     
-SET @s = CONCAT('create table ', name, '.Spil(game_id integer primary key, name nvarchar(50), Tid_Start date, Tid_Slut date);' );
+SET @s = CONCAT('create table ', name, '.Spil(game_id integer primary key, name nvarchar(50), Tid_Start date, Tid_Slut date, constraint FK_EmptyBandit_GameID foreign key (game_id) references EmptyBandit.Spil(id);' );
 PREPARE stmt_create FROM @s;
 EXECUTE stmt_create;
 DEALLOCATE PREPARE stmt_create;
@@ -18,7 +18,7 @@ PREPARE stmt_create FROM @s;
 EXECUTE stmt_create;
 DEALLOCATE PREPARE stmt_create;
 
-SET @s = CONCAT('create table ',name,'.Bil(bil_farve varchar(20) primary key, placering integer, bil_id integer, constraint fk_Spiller_info_spiller_id foreign key (bil_id) references Spiller_info(spiller_id));');
+SET @s = CONCAT('create table ',name,'.Bil(bil_farve varchar(20) primary key, placering integer, bil_id integer, constraint FK_Spiller_info_spiller_id foreign key (bil_id) references Spiller_info(spiller_id));');
 PREPARE stmt_create FROM @s;
 EXECUTE stmt_create;
 DEALLOCATE PREPARE stmt_create;
@@ -32,4 +32,5 @@ SET @s = CONCAT('create table ',name,'.Spiller(spiller_id integer, game_id integ
 PREPARE stmt_create FROM @s;
 EXECUTE stmt_create;
 DEALLOCATE PREPARE stmt_create;
+
 END

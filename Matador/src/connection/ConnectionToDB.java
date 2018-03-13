@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ConnectionToDB {
 
-	private static String dbUrl = "jdbc:mysql://localhost/";
+	private static String dbUrl = "jdbc:mysql://localhost/EmptyBandit";
 	private static String dbUsername = "root";
 	private static String dbPassword = "gruppe25";
 	private int i = 0;
@@ -50,13 +50,26 @@ public class ConnectionToDB {
 	public void useOfStoredProcedure() {
 		Connection con = dbConnect();
 		try {
-			// Statement st = con.prepareCall("{call EmptyBandit.Ostehøvl()}");
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("Select count(*) from EmptyBandit.Spil;");
+			if(rs.next()) {
+				if(rs.getInt(1) == 0) {
+					i = 0;
+				}
+				else {
+					ResultSet rs1 = stmt.executeQuery("Select max(id) from EmptyBandit.Spil");
+					if(rs1.next()) {
+						i = rs1.getInt(1)+1;
+					}
+				}
+			}
+			stmt.executeUpdate("INSERT INTO EmptyBandit.Spil VALUES(" + i +");");
 			CallableStatement st = con.prepareCall("call EmptyBandit.CreateNewGame(?)");
 			st.setString(1, "_" + i);
 			st.execute();
-			i++;
+			stmt.executeUpdate("INSERT INTO Matador_" + i + ".Spil(game_id, Tid_Start) VALUES(" + i +", now());");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.getMessage();
 			e.printStackTrace();
 		}
 	}
