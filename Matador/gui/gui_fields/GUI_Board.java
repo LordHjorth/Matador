@@ -31,7 +31,7 @@ public final class GUI_Board extends javax.swing.JFrame implements Observer {
     private static final long serialVersionUID = -2551372048143397506L;
     public static final String FONT = "Tahoma";
     public static final int FONTSIZE = 10;
-    public static final Color BASECOLOR = new Color(0, 0, 128);
+    public static final Color BASECOLOR = new Color(0, 102,51);
     public static final int MAX_PLAYER_COUNT = 6;
     
     private SwingComponentFactory factory = new SwingComponentFactory();
