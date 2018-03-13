@@ -1,0 +1,11 @@
+I WORKBENCH:
+
+-> Lav en ny database med navnet 'EmptyBandit';
+
+-> GÅ IND UNDER FANEN 'SCHEMAS' OG FOLD 'EmptyBandit' UD.
+
+-> HØJRE KLIK PÅ 'STORED PROCEDURES'
+
+-> CREATE STORED PROCEDURE...
+
+-> ERSTAT NUVÆRENDE TEKST MED TEKSTEN FRA FILEN 'CreateNewGame.txt' som findes i SQL files mappen heri projektet :-) tror det burde virke nu
