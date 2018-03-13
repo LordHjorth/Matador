@@ -1,0 +1,35 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateNewGame`(s nvarchar(10))
+BEGIN
+declare name nvarchar(20);
+set name = CONCAT('Matador', s);
+
+SET @s = CONCAT('CREATE DATABASE ', name);
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+    
+SET @s = CONCAT('create table ', name, '.Spil(game_id integer primary key, name nvarchar(50), Tid_Start date, Tid_Slut date);' );
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+
+SET @s = CONCAT('create table ',name,'.Spiller_info(spiller_id integer, navn nvarchar(30), balance decimal, bil_farve varchar(20) unique, primary key (spiller_id), fængsel bit, chancekort nvarchar(50));');
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+
+SET @s = CONCAT('create table ',name,'.Bil(bil_farve varchar(20) primary key, placering integer, bil_id integer, constraint fk_Spiller_info_spiller_id foreign key (bil_id) references Spiller_info(spiller_id));');
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+
+SET @s = CONCAT('create table ',name,'.Ejerskab(felt_id integer, spiller_id integer, antal_huse integer, primary key (felt_id,spiller_id), constraint FK_SpillerInfo_SpillerID foreign key (spiller_id) references Spiller_info(spiller_id));');
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+
+SET @s = CONCAT('create table ',name,'.Spiller(spiller_id integer, game_id integer, constraint FK_Spiller_info_SpillerID foreign key(spiller_id) references Spiller_info(spiller_id), constraint FK_Spil_GameID foreign key (game_id) references Spil(game_id));');
+PREPARE stmt_create FROM @s;
+EXECUTE stmt_create;
+DEALLOCATE PREPARE stmt_create;
+END
