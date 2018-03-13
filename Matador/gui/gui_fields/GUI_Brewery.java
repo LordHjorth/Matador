@@ -23,7 +23,7 @@ public final class GUI_Brewery extends GUI_Ownable {
         super(bgColor, fgColor, title, subText, description, rent);
         
         if ("default".equalsIgnoreCase(picture)) {
-            int p = (picCounter++ % 2) + 1;
+            int p = (picCounter++ % 2)+ 1;
             String path = Attrs.getImagePath(String.format("GUI_Field.Image.Brewery%d", p));
             this.icon = this.factory.createIcon(path);
         } else {
