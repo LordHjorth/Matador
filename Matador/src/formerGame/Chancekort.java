@@ -1,4 +1,4 @@
-package game;
+package formerGame;
 
 public class Chancekort {
 	private int value;
