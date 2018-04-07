@@ -2,7 +2,7 @@ package connection;
 
 import java.sql.*;
 
-
+//connection til DB
 
 public class ConnectionToDB {
 
