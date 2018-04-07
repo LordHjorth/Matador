@@ -47,7 +47,7 @@ public class ConnectionToDB {
 		try {
 			Connection con = getConnection();
 			PreparedStatement create = con.prepareStatement(
-					"Create Table IF NOT EXISTS Landekode (Landenavn varchar(255), Forkortelse varchar(255), Kontinent Varchar(255))");
+					"Create Table IF NOT EXISTS Testtabel (Landenavn varchar(255), Forkortelse varchar(255), Kontinent Varchar(255))");
 			create.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e);
